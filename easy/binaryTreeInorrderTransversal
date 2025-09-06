@@ -1,0 +1,23 @@
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var inorderTraversal = function(root) {
+   let res = []                 //returned array
+    let dfs =(node)=>{          // the function thats is being recursed
+        if (!node) return;      // base case for recursion
+            dfs(node.left)      // always start left. this checks if there is a left node
+            res.push(node.val)  //pushes the value into the res array if you cant go left any further
+            dfs(node.right)     // this pushed the right node after going left,value then right 
+    }
+    dfs(root)                   // calls the recursion function on the given tree 
+    return res                  //return the end result.
+};
